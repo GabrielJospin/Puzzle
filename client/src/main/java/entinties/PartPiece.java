@@ -51,4 +51,13 @@ public class PartPiece implements Part {
         Part part = new PartPiece(name, description);
         subComponents.put(part.getId(), quant );
     }
+
+    @Override
+    public int compare(Part part, Part t1) {
+        try {
+            return part.getId().compareTo(t1.getId());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
