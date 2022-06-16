@@ -12,7 +12,7 @@ public class PartPiece implements Part {
     private final UUID id;
     private String name;
     private String description;
-    private Map<String, UUID> subComponents;
+    private Map<UUID, Integer> subComponents;
 
     PartPiece(String name, String description){
         this.id = UUID.fromString(name);
@@ -37,18 +37,18 @@ public class PartPiece implements Part {
     }
 
     @Override
-    public Map<String, UUID> getSubComponents() throws RemoteException {
+    public Map<UUID, Integer> getSubComponents() throws RemoteException {
         return this.subComponents;
     }
 
     @Override
     public void addSupComponent(Part part) throws RemoteException {
-        subComponents.put(part.getName(), part.getId());
+        subComponents.put(part.getId(), 1);
     }
 
     @Override
-    public void addSubComponent(String name, String description) throws RemoteException {
+    public void addSubComponent(String name, String description, Integer quant) throws RemoteException {
         Part part = new PartPiece(name, description);
-        subComponents.put(part.getName(), part.getId());
+        subComponents.put(part.getId(), quant );
     }
 }

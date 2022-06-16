@@ -11,9 +11,9 @@ public interface Part extends Remote{
     UUID getId() throws RemoteException;
     String getName() throws RemoteException;
     String getDescription() throws RemoteException;
-    Map<String, UUID> getSubComponents() throws RemoteException;
+    Map<UUID, Integer> getSubComponents() throws RemoteException;
 
     //create Public Remote action Methods
     void addSupComponent(Part part)throws RemoteException;
-    void addSubComponent(String name, String description) throws  RemoteException;
+    void addSubComponent(String name, String description, Integer quant) throws  RemoteException;
 }
