@@ -10,7 +10,7 @@ public interface PartRepository extends Remote {
     List<Part> getPartList() throws RemoteException;
     void addPart(Part part) throws RemoteException;
     Part addPart(String name, String description) throws RemoteException;
-    void addSubComponent(Part part, Part subpart, int quant);
+    void addSubComponent(Part part, Part subpart, int quant) throws RemoteException;
     Part getPart(UUID id);
 
 }

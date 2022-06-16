@@ -34,8 +34,9 @@ public class PieceRepository implements PartRepository {
     }
 
     @Override
-    public void addSubComponent(Part part, Part subpart, int quant) {
-
+    public void addSubComponent(Part part, Part subpart, int quant) throws RemoteException {
+        int pos = this.partList.indexOf(part);
+        this.partList.get(pos).addSubComponent(subpart.getName(), subpart.getDescription(), quant);
     }
 
     @Override
