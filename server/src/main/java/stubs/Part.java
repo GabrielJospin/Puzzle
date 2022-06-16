@@ -2,10 +2,11 @@ package stubs;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-public interface Part extends Remote{
+public interface Part extends Remote, Comparator<Part> {
 
     // Create Object public Getters
     UUID getId() throws RemoteException;
