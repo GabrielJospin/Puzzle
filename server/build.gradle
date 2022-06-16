@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'br.usp.GabrielJospin'
@@ -10,6 +11,10 @@ repositories {
 }
 
 dependencies {
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20220320'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -17,3 +22,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+application{
+    mainClass = 'br.usp.gabrieljospin.Server'
+}
+

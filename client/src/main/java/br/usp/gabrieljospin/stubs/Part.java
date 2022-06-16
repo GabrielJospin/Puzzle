@@ -1,19 +1,20 @@
-package stubs;
+package br.usp.gabrieljospin.stubs;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-public interface Part extends Remote{
+public interface Part extends Remote, Comparator<Part> {
 
     // Create Object public Getters
     UUID getId() throws RemoteException;
     String getName() throws RemoteException;
     String getDescription() throws RemoteException;
-    Map<String, UUID> getSubComponents() throws RemoteException;
+    Map<UUID, Integer> getSubComponents() throws RemoteException;
 
     //create Public Remote action Methods
     void addSupComponent(Part part)throws RemoteException;
-    void addSubComponent(String name, String description) throws  RemoteException;
+    void addSubComponent(String name, String description, Integer quant) throws  RemoteException;
 }
