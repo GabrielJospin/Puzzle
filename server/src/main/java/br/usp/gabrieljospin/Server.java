@@ -5,9 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import br.usp.gabrieljospin.stubs.PartRepository;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -26,7 +24,11 @@ public class Server {
             registry.bind(jsonObject.getString("name"), obj);
             System.out.println("Server ready");
         }catch (Exception e){
-            System.err.printf("{\nSystem answer:500\nMessage: %s\n}", e.getMessage());
+            System.err.printf("{\nSystem answer:500\n" +
+                    "Message: %s\n" +
+                    "in: %s\n" +
+                    "full: %s\n}",
+                    e.getMessage(), e.getLocalizedMessage(), e.toString());
         }
     }
 
