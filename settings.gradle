@@ -1,0 +1,4 @@
+rootProject.name = 'Puzzle'
+include 'client'
+include 'server'
+
