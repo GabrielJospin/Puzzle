@@ -4,43 +4,40 @@ import stubs.Part;
 import stubs.PartRepository;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class PieceRepository implements PartRepository {
 
-    List<Part> partList;
+    Map<UUID, Part> partList;
 
     public PieceRepository() {
-        this.partList = new ArrayList<>();
+        this.partList = new HashMap<>();
     }
 
     @Override
-    public List<Part> getPartList() throws RemoteException {
+    public Map<UUID, Part> getPartList() throws RemoteException {
         return this.partList;
     }
 
     @Override
     public void addPart(Part part) throws RemoteException {
-        this.partList.add(part);
+        this.partList.put(part.getId(),part);
     }
 
     @Override
     public Part addPart(String name, String description) throws RemoteException {
         Part part = new PartPiece(name, description);
-        this.partList.add(part);
+        this.partList.put(part.getId(), part);
         return part;
     }
 
     @Override
     public void addSubComponent(Part part, Part subpart, int quant) throws RemoteException {
-        int pos = this.partList.indexOf(part);
-        this.partList.get(pos).addSubComponent(subpart.getName(), subpart.getDescription(), quant);
+        this.partList.get(part.getId()).addSubComponent(subpart.getName(), subpart.getDescription(), quant);
     }
 
     @Override
     public Part getPart(UUID id) {
-        return null;
+        return this.partList.get(id);
     }
 }
