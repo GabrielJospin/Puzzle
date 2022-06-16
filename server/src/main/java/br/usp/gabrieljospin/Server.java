@@ -1,9 +1,14 @@
-import entinties.PieceRepository;
+package br.usp.gabrieljospin;
+
+import br.usp.gabrieljospin.entinties.PieceRepository;
+import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
-import stubs.PartRepository;
+import br.usp.gabrieljospin.stubs.PartRepository;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -12,11 +17,8 @@ public class Server {
 
     public static void main(String[] args) {
         try {
-            String jsonPath = "../resources/" + args[0]+".json";
-            JSONObject jsonObject = new JSONObject(
-                                        new BufferedReader(
-                                            new FileReader(jsonPath)).toString());
-
+            String jsonPath = "src/main/resources/" + args[0]+".json";
+            JSONObject jsonObject =getJson(jsonPath);
             int port = jsonObject.getInt("port");
             LocateRegistry.createRegistry(port);
             registry = LocateRegistry.getRegistry(port);
@@ -26,5 +28,18 @@ public class Server {
         }catch (Exception e){
             System.err.printf("{\nSystem answer:500\nMessage: %s\n}", e.getMessage());
         }
+    }
+
+    private static JSONObject getJson(String jsonPath) {
+        File file = new File(jsonPath);
+        String content = "";
+
+        try {
+            content = FileUtils.readFileToString(file,"utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new JSONObject(content);
     }
 }

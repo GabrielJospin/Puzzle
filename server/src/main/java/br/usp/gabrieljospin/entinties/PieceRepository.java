@@ -1,12 +1,13 @@
-package entinties;
+package br.usp.gabrieljospin.entinties;
 
-import stubs.Part;
-import stubs.PartRepository;
+import br.usp.gabrieljospin.stubs.Part;
+import br.usp.gabrieljospin.stubs.PartRepository;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.*;
 
-public class PieceRepository implements PartRepository {
+public class PieceRepository implements PartRepository, Serializable {
 
     Map<UUID, Part> partList;
 

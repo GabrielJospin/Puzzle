@@ -1,6 +1,6 @@
-package entinties;
+package br.usp.gabrieljospin.entinties;
 
-import stubs.Part;
+import br.usp.gabrieljospin.stubs.Part;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
