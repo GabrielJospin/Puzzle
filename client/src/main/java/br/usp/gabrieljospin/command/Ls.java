@@ -20,7 +20,7 @@ public class Ls implements Command {
         if(!c.equals("ls"))
             throw new Exception(String.format("Wrong Command, %s is not ls", c));
 
-        if(args.get(0).equals("--help")){
+        if(args.size() > 0 && args.get(0).equals("--help")){
             help();
         }
 

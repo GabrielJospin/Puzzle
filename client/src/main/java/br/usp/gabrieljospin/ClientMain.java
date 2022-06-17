@@ -19,6 +19,10 @@ public class ClientMain {
         Command command;
         String action = List.of(input.split(" ")).get(0);
         switch (action){
+            case "clear":
+                command = new Clear(input, mapServers);
+                command.execute();
+                break;
             case "help":
                 help();
                 break;
@@ -61,6 +65,13 @@ public class ClientMain {
             main(args);
         }
 
+        try {
+            input = "clear";
+            Clear out = new Clear(input, mapServers);
+            out.execute();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void help() {

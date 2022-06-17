@@ -22,7 +22,7 @@ public class Mount implements  Command{
         if(!c.equals("mount"))
             throw new Exception(String.format("Wrong Command, %s is not mount", c));
 
-        if(args.get(0).equals("--help")){
+        if(args.size() > 0 && args.get(0).equals("--help")){
             help();
         }
     }
