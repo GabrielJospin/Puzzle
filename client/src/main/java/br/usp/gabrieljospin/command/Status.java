@@ -1,5 +1,6 @@
 package br.usp.gabrieljospin.command;
 
+import br.usp.gabrieljospin.connection.Connection;
 import br.usp.gabrieljospin.connection.ServerObject;
 
 import java.rmi.RemoteException;
@@ -42,6 +43,12 @@ public class Status implements Command{
         System.out.printf("%d status connected\n", servers.size());
         System.out.println("|nickname\t|Port\t|Fullname\t|Status\n");
         for(var entry: servers.entrySet()){
+            try {
+                Connection conn = Connection.getInstance(entry.getValue().getConnName());
+                entry.getValue().setStatus(true);
+            } catch (Exception e) {
+                entry.getValue().setStatus(false);
+            }
             StringBuilder sb = new StringBuilder();
             sb.append("|").append(entry.getKey()).append("\t");
             sb.append("|").append(entry.getValue().getPort()).append("\t");

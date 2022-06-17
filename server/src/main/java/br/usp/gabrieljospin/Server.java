@@ -15,13 +15,13 @@ public class Server {
 
     public static void main(String[] args) {
         try {
-            String jsonPath = "src/main/resources/" + args[0]+".json";
+            String jsonPath = "src/main/resources/config.json";
             JSONObject jsonObject =getJson(jsonPath);
-            int port = jsonObject.getInt("port");
+            int port = jsonObject.getJSONObject(args[0]).getInt("port");
             LocateRegistry.createRegistry(port);
             registry = LocateRegistry.getRegistry(port);
             PartRepository obj = new PieceRepository();
-            registry.bind(jsonObject.getString("name"), obj);
+            registry.bind(jsonObject.getJSONObject(args[0]).getString("name"), obj);
             System.out.println("Server ready");
         }catch (Exception e){
             System.err.printf("{\nSystem answer:500\n" +

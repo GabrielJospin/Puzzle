@@ -1,0 +1,46 @@
+{
+  "server1": {
+    "port": 10001,
+    "name": "server1"
+  },
+  "server2": {
+    "port": 10002,
+    "name": "server2"
+  },
+  "server3": {
+    "port": 10003,
+    "name": "server3"
+  },
+  "server4": {
+    "port": 10004,
+    "name": "server4"
+  },
+  "server5": {
+    "port": 10005,
+    "name": "server5"
+  },
+  "server6": {
+    "port": 10006,
+    "name": "server6"
+  },
+  "server7": {
+    "port": 10007,
+    "name": "server7"
+  },
+  "server8": {
+    "port": 10008,
+    "name": "server8"
+  },
+  "server9": {
+    "port": 10009,
+    "name": "server9"
+  },
+  "server10": {
+    "port": 10010,
+    "name": "server10"
+  },
+  "server11": {
+    "port": 10011,
+    "name": "strangerServer"
+  }
+}
