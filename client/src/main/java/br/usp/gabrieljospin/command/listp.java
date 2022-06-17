@@ -1,17 +1,24 @@
 package br.usp.gabrieljospin.command;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.usp.gabrieljospin.connection.Connection;
+import br.usp.gabrieljospin.stubs.Part;
+
+import java.rmi.RemoteException;
+import java.util.*;
 
 public class listp implements command{
 
     private List<String> args;
     private String command;
+    private Connection conn;
 
-    public listp(String command) {
+    public listp(String command) throws Exception {
         this.command = command;
         this.args = new ArrayList<>(List.of(command.split(" ")));
-        this.args.remove(0);
+        String c = this.args.remove(0);
+        if(!c.equals("listp"))
+            throw new Exception(String.format("Wrong Command, %s is not listp", c));
+        this.conn = Connection.getInstance(args.get(0));
     }
 
     @Override
@@ -25,7 +32,13 @@ public class listp implements command{
     }
 
     @Override
-    public void execute() {
-        //TODO Execute
+    public void execute() throws RemoteException {
+        Optional<Map<UUID, Part>> optionalMap = Optional.of(conn.getRepository().getPartList());
+        Map<UUID, Part> mapPart = optionalMap.get();
+        StringBuilder sb = new StringBuilder();
+        for(var entry: mapPart.entrySet())
+            sb.append(entry.getKey()).append("\t").append(entry.getValue().toString()).append("\n");
+        System.out.println(sb);
+
     }
 }
