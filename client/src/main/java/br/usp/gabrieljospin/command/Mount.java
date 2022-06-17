@@ -57,7 +57,7 @@ public class Mount implements  Command{
 
     @Override
     public void help() {
-        System.out.println("this method will print all server you mount");
+        System.out.println("this method will mount a server in your sys");
         System.out.println("to execute this method you use:");
         System.out.println("mount <port> <Server Name> <Server nickname>");
         System.out.println("The server nickname can be any name you want");

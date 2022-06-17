@@ -34,6 +34,10 @@ public class ClientMain {
                 command = new Status(input, mapServers);
                 command.execute();
                 break;
+            case "unmount":
+                command = new Unmount(input, mapServers);
+                command.execute();
+                break;
             default:
                 System.err.println("ERROR: Invalid command");
                 System.err.println("\tuse help to know available commands");

@@ -61,7 +61,9 @@ public class Status implements Command{
 
     @Override
     public void help() {
-
+        System.out.println("This command will list ever servers and yours status");
+        System.out.println("to execute this method you use:");
+        System.out.println("status");
     }
 }
 
