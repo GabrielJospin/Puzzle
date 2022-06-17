@@ -6,19 +6,24 @@ import br.usp.gabrieljospin.stubs.Part;
 import java.rmi.RemoteException;
 import java.util.*;
 
-public class listp implements command{
+public class Ls implements Command {
 
     private List<String> args;
     private String command;
     private Connection conn;
 
-    public listp(String command) throws Exception {
+    public Ls(String command) throws Exception {
         this.command = command;
         this.args = new ArrayList<>(List.of(command.split(" ")));
         String c = this.args.remove(0);
         if(!c.equals("listp"))
             throw new Exception(String.format("Wrong Command, %s is not listp", c));
-        this.conn = Connection.getInstance(args.get(0));
+
+        if(args.get(0).equals("--help")){
+            help();
+        }
+
+        this.conn = Connection.getInstance("//127.0.0.1:" + args.get(0) + "/" + args.get(1));
     }
 
     @Override
@@ -40,5 +45,12 @@ public class listp implements command{
             sb.append(entry.getKey()).append("\t").append(entry.getValue().getName()).append("\n");
         System.out.println(sb);
 
+    }
+
+    @Override
+    public void help() {
+        System.out.println("this method will print all Parts in a repository");
+        System.out.println("to execute this method you use:");
+        System.out.println("listp <port> <Server name>");
     }
 }
