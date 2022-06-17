@@ -1,6 +1,7 @@
 package br.usp.gabrieljospin.command;
 
 import br.usp.gabrieljospin.connection.Connection;
+import br.usp.gabrieljospin.connection.ServerObject;
 import br.usp.gabrieljospin.stubs.Part;
 
 import java.rmi.RemoteException;
@@ -12,7 +13,7 @@ public class Ls implements Command {
     private String command;
     private Connection conn;
 
-    public Ls(String command) throws Exception {
+    public Ls(String command,  Map servers) throws Exception {
         this.command = command;
         this.args = new ArrayList<>(List.of(command.split(" ")));
         String c = this.args.remove(0);
@@ -23,7 +24,12 @@ public class Ls implements Command {
             help();
         }
 
-        this.conn = Connection.getInstance("//127.0.0.1:" + args.get(0) + "/" + args.get(1));
+        ServerObject server = (ServerObject) servers.get(args.get(0));
+
+        if (server == null)
+            throw new Exception("server "+ args.get(0) +" does not Exist");
+
+        this.conn = Connection.getInstance(server.getConnName());
     }
 
     @Override
@@ -51,6 +57,6 @@ public class Ls implements Command {
     public void help() {
         System.out.println("this method will print all Parts in a repository");
         System.out.println("to execute this method you use:");
-        System.out.println("listp <port> <Server name>");
+        System.out.println("listp <Server Name>");
     }
 }
