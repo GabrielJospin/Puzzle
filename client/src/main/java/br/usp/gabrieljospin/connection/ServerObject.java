@@ -11,7 +11,7 @@ public class ServerObject {
     public ServerObject(String name, Integer port) {
         this.name = name;
         this.port = port;
-        this.connName = "//127.0.0.1:" + name + "/" + port;
+        this.connName = "//127.0.0.1:" + port + "/" + name;
         this.status = Status.NEW;
     }
 

@@ -12,11 +12,11 @@ public class ClientMain {
 
     private static Map<String, ServerObject> mapServers = new HashMap<>();
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("client@puzzle>");
-            String input = scanner.nextLine();
-            while(!input.startsWith(":q")){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("client@puzzle>");
+        String input = scanner.nextLine();
+        while(!input.startsWith(":q")){
+            try {
 
                 Command command;
                 String action = List.of(input.split(" ")).get(0);
@@ -25,7 +25,9 @@ public class ClientMain {
                         help();
                         break;
                     case "mount":
-
+                        command = new Mount(input, mapServers);
+                        command.execute();
+                        break;
                     case "ls":
                         command = new Ls(input, mapServers);
                         command.execute();
@@ -37,11 +39,13 @@ public class ClientMain {
                 System.out.println("");
                 System.out.print("client@puzzle>");
                 input = scanner.nextLine();
+
+            }catch (Exception e){
+                System.err.println("Error");
+                System.err.println(e.getMessage());
             }
-        }catch (Exception e){
-            System.err.println("Error");
-            System.err.println(e.getMessage());
         }
+
     }
 
     private static void help() {

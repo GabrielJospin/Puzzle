@@ -20,7 +20,7 @@ public class Mount implements  Command{
         this.args = new ArrayList<>(List.of(command.split(" ")));
         String c = this.args.remove(0);
         if(!c.equals("mount"))
-            throw new Exception(String.format("Wrong Command, %s is not ls", c));
+            throw new Exception(String.format("Wrong Command, %s is not mount", c));
 
         if(args.get(0).equals("--help")){
             help();
