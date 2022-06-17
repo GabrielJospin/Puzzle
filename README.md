@@ -1,15 +1,17 @@
 # Puzzle
 Project of distributed system
+
 ## Prerquisites
-- 
-## To Run
+ - a
+
+## To Run Server
 ```bash 
-
+    ./gradlew server:run --args "<server Name>"
 ```
-## To Install
+## To Run Client
 ```bash
-
+    ./gradlew client:run --console=plain
 ``` 
 
 ## Future Additions
-- 
+ - a
