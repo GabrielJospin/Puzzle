@@ -37,7 +37,7 @@ public class listp implements command{
         Map<UUID, Part> mapPart = optionalMap.get();
         StringBuilder sb = new StringBuilder();
         for(var entry: mapPart.entrySet())
-            sb.append(entry.getKey()).append("\t").append(entry.getValue().toString()).append("\n");
+            sb.append(entry.getKey()).append("\t").append(entry.getValue().getName()).append("\n");
         System.out.println(sb);
 
     }
