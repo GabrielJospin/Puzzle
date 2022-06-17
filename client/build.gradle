@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'br.usp.GabrielJospin'
@@ -16,4 +17,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application{
+    mainClass = 'br.usp.gabrieljospin.ClientMain'
+}
+
+run {
+    standardInput = System.in
 }

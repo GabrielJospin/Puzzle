@@ -16,8 +16,8 @@ public class Ls implements Command {
         this.command = command;
         this.args = new ArrayList<>(List.of(command.split(" ")));
         String c = this.args.remove(0);
-        if(!c.equals("listp"))
-            throw new Exception(String.format("Wrong Command, %s is not listp", c));
+        if(!c.equals("ls"))
+            throw new Exception(String.format("Wrong Command, %s is not ls", c));
 
         if(args.get(0).equals("--help")){
             help();
