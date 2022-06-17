@@ -76,9 +76,12 @@ public class ClientMain {
 
     private static void help() {
         System.out.println("Available commands");
+        System.out.println(":q\t|quit the system\t");
         System.out.println("help\t|list all commands");
         System.out.println("ls\t|list every part in server\t");
         System.out.println("mount\t|connect a new server\t");
+        System.out.println("status\t|show all servers\t");
+        System.out.println("unmount\t|disconnect a server\t");
         System.out.println("write <command> --help to understands args");
     }
 }
