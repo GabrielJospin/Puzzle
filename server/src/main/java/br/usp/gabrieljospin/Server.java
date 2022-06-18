@@ -15,6 +15,11 @@ public class Server {
 
     public static void main(String[] args) {
         try {
+
+            /*if (System.getSecurityManager() == null) {
+                System.setSecurityManager(new SecurityManager());
+            }*/
+
             String jsonPath = "src/main/resources/config.json";
             JSONObject jsonObject =getJson(jsonPath);
             int port = jsonObject.getJSONObject(args[0]).getInt("port");

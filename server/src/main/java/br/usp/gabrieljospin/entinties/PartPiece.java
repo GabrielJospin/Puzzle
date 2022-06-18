@@ -2,20 +2,24 @@ package br.usp.gabrieljospin.entinties;
 
 import br.usp.gabrieljospin.stubs.Part;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class PartPiece implements Part {
+public class PartPiece extends UnicastRemoteObject implements Part, Serializable, Comparator<Part> {
 
     private final UUID id;
     private String name;
     private String description;
     private Map<UUID, Integer> subComponents;
 
-    PartPiece(String name, String description){
-        this.id = UUID.fromString(name);
+    PartPiece(String name, String description) throws RemoteException {
+        super();
+        this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.subComponents = new HashMap<>();
@@ -53,11 +57,13 @@ public class PartPiece implements Part {
     }
 
     @Override
-    public int compare(Part part, Part t1) {
+    public int compare(Part part, Part t1){
         try {
             return part.getId().compareTo(t1.getId());
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
+            return 0;
+            // throw new RuntimeException(e);
         }
     }
 }

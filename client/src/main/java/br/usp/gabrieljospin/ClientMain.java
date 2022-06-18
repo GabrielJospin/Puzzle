@@ -19,6 +19,10 @@ public class ClientMain {
         Command command;
         String action = List.of(input.split(" ")).get(0);
         switch (action){
+            case "addp":
+                command = new Addp(input, mapServers);
+                command.execute();
+                break;
             case "clear":
                 command = new Clear(input, mapServers);
                 command.execute();
@@ -26,12 +30,12 @@ public class ClientMain {
             case "help":
                 help();
                 break;
-            case "mount":
-                command = new Mount(input, mapServers);
-                command.execute();
-                break;
             case "ls":
                 command = new Ls(input, mapServers);
+                command.execute();
+                break;
+            case "mount":
+                command = new Mount(input, mapServers);
                 command.execute();
                 break;
             case "status":
@@ -72,6 +76,8 @@ public class ClientMain {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        scanner.close();
     }
 
     private static void help() {

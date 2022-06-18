@@ -23,13 +23,17 @@ public class PieceRepository extends UnicastRemoteObject implements PartReposito
 
     @Override
     public void addPart(Part part) throws RemoteException {
+        System.out.print("Hi2\n");
         this.partList.put(part.getId(),part);
+        System.out.println("By2");
     }
 
     @Override
     public Part addPart(String name, String description) throws RemoteException {
+        System.out.print("Hi1\n");
         Part part = new PartPiece(name, description);
-        this.partList.put(part.getId(), part);
+        System.out.println("By1");
+        addPart(part);
         return part;
     }
 

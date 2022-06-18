@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-public interface Part extends Remote, Comparator<Part> {
+public interface Part extends Remote{
 
     // Create Object public Getters
     UUID getId() throws RemoteException;
@@ -17,4 +17,6 @@ public interface Part extends Remote, Comparator<Part> {
     //create Public Remote action Methods
     void addSupComponent(Part part)throws RemoteException;
     void addSubComponent(String name, String description, Integer quant) throws  RemoteException;
+
+    public int compare(Part part, Part t1);
 }
