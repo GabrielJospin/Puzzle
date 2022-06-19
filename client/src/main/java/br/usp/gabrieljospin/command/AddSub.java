@@ -66,6 +66,8 @@ public class AddSub implements Command {
 
     @Override
     public void help() {
-
+        System.out.println("this method will link a part of a select server to a other part master of a selected server");
+        System.out.println("to execute this method you use:");
+        System.out.println("addSub <ServerMaster nickname> <PartMaster ID> <ServerSub nickname> <PartSub ID>");
     }
 }

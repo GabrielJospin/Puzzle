@@ -55,6 +55,8 @@ public class Get implements Command {
 
     @Override
     public void help() {
-
+        System.out.println("Get a specific Part from a Server by ID and save in \"Client Memory\"");
+        System.out.println("to execute this method you use:");
+        System.out.println("get <Server nickname> <Part ID>");
     }
 }

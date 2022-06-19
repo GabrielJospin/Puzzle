@@ -79,6 +79,8 @@ public class Addp implements Command {
 
     @Override
     public void help() {
-
+        System.out.println("this method will add a part to a select server");
+        System.out.println("to execute this method you use:");
+        System.out.println("addp <Server nickname>");
     }
 }

@@ -57,6 +57,6 @@ public class Ls implements Command {
     public void help() {
         System.out.println("this method will print all Parts in a repository");
         System.out.println("to execute this method you use:");
-        System.out.println("listp <Server Name>");
+        System.out.println("listp <Server nickname>");
     }
 }

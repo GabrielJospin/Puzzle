@@ -60,6 +60,8 @@ public class Show implements Command {
 
     @Override
     public void help() {
-
+        System.out.println("Show the part in \"Client memory\"");
+        System.out.println("to execute this method you use:");
+        System.out.println("show <Server nickname>");
     }
 }
