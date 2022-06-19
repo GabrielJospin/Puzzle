@@ -37,7 +37,7 @@
   },
   "server10": {
     "port": 10010,
-    "name": "server10"
+    "name": "serverA"
   },
   "server11": {
     "port": 10011,
