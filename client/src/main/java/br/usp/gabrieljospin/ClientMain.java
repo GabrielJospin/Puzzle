@@ -50,6 +50,10 @@ public class ClientMain {
                 command = new Mount(input, mapServers);
                 command.execute();
                 break;
+            case "show":
+                command = new Show(input, mapServers);
+                command.execute();
+                break;
             case "status":
                 command = new Status(input, mapServers);
                 command.execute();
