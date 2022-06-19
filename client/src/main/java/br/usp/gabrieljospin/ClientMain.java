@@ -35,6 +35,10 @@ public class ClientMain {
                 command = new ClearList(input, mapServers);
                 command.execute();
                 break;
+            case "get":
+                command = new Get(input, mapServers);
+                command.execute();
+                break;
             case "help":
                 help();
                 break;
