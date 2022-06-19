@@ -6,10 +6,7 @@ import br.usp.gabrieljospin.stubs.Part;
 import br.usp.gabrieljospin.stubs.PartRepository;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Addp implements Command {
     List<String> args;
@@ -63,11 +60,22 @@ public class Addp implements Command {
             PartRepository rep = conn.getRepository();
             System.out.println("rep: "+rep);
             newPart = rep.addPart(name, description);
+            for(UUID id : conn.getCurrentSubparts().keySet()){
+                Optional<Part> optionalPart = findPart(id, conn);
+                if(optionalPart.isPresent()){
+                    conn.getRepository().addSubComponent(newPart, optionalPart.get(),
+                            conn.getCurrentSubparts().get(id));
+                }
+            }
             System.out.println("id="+newPart.getId());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
 
+    }
+
+    public Optional<Part> findPart(UUID partId, Connection conn) {
+        return Optional.of(conn.getRepository().getPart(partId));
     }
 
     @Override
