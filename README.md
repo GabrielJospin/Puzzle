@@ -13,6 +13,7 @@ developer it. I hope you like your experience to use it.
 ## Prerequisites
  - Java 11.0.15 or similar
  - Gradle 7.2 or similar
+ - ~~Norton Antivirus~~
 
 ## Before use
 
