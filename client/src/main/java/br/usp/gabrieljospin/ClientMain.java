@@ -51,21 +51,19 @@ public class ClientMain {
                 System.err.println("\tuse help to know available commands");
         }
         System.out.println("");
-        System.out.print("client@puzzle>");
+        System.out.print("client@puzzle$ ");
         input = scanner.nextLine();
         interaction(input, scanner);
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("client@puzzle>");
+        System.out.print("client@puzzle$ ");
         String input = scanner.nextLine();
         try {
             interaction(input, scanner);
         }catch (Exception e){
             System.err.println("Error");
             System.err.println(e.getMessage());
-            System.err.println(e.getLocalizedMessage());
-            System.out.print("client@puzzle>");
             main(args);
         }
 
