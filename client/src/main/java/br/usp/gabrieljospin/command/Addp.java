@@ -58,7 +58,6 @@ public class Addp implements Command {
             String serverName = servers.get(args.get(0)).getConnName();
             Connection conn = Connection.getInstance(serverName);
             PartRepository rep = conn.getRepository();
-            System.out.println("rep: "+rep);
             newPart = rep.addPart(name, description);
             for(UUID id : conn.getCurrentSubparts().keySet()){
                 Optional<Part> optionalPart = findPart(id, conn);

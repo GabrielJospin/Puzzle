@@ -23,6 +23,10 @@ public class ClientMain {
                 command = new Addp(input, mapServers);
                 command.execute();
                 break;
+            case "addSub":
+                command = new AddSub(input, mapServers);
+                command.execute();
+                break;
             case "clear":
                 command = new Clear(input, mapServers);
                 command.execute();
