@@ -1,11 +1,11 @@
 # Puzzle
-A big project developer that can revolutionize
-the distributed system, that's Google Cloud. Puzzle
-it's a simple Program Exercise to Distributed System class
+A big project develop to revolutionize
+the distributed system, this is Google Cloud. Puzzle
+it's a simple Programming Exercise to Distributed System class
 in the São Paulo University. 
 
 Despite the modesty of the program, was really fun to
-developer it. I hope you like you experience to use this.
+developer it. I hope you like your experience to use it.
 
     - That's not just a restaurant, that's a gastronomic experience
     - Sir, This is a Wendy's
@@ -17,7 +17,7 @@ developer it. I hope you like you experience to use this.
 ## Before use
 
 Before you start use this system you need run the 
-Gradle dependencies, because need add the dependencies
+Gradle dependencies, because need add the libraries
 to the gradle package. For this you run the command:
 ```bash 
     ./gradlew server:dependencies 
@@ -53,8 +53,8 @@ You can change the name and the port in json. The default config id:
 ``` 
 This will show you a Command line
 To access all available commands
-you use the command ```help```.
-For understand better a command you 
+you can use the command ```help```.
+For understand better a command you can
 use the structure ```<command> --help```
 
 
