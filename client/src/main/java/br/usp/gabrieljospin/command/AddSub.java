@@ -2,6 +2,7 @@ package br.usp.gabrieljospin.command;
 
 import br.usp.gabrieljospin.connection.Connection;
 import br.usp.gabrieljospin.connection.ServerObject;
+import br.usp.gabrieljospin.stubs.Part;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -40,17 +41,23 @@ public class AddSub implements Command {
     @Override
     public void execute() throws RemoteException {
         try {
-            String servername = servers.get(args.get(0)).getConnName();
-            Integer quant = Integer.getInteger(args.get(1));
-            Connection conn = Connection.getInstance(servername);
+            String servernameMaster = servers.get(args.get(0)).getConnName();
+            UUID idMaster = UUID.fromString(args.get(1));
+            String servernameSub = servers.get(args.get(2)).getConnName();
+            UUID idSub = UUID.fromString(args.get(3));
 
-            if(conn.getCurrentPart() == null){
-                System.out.println("Current part in this server is null");
-                return;
-            }
+            System.out.println("["+servernameMaster+", "+servernameSub+", "+idMaster+", "+ idSub+ "]");
 
-            UUID id = conn.getCurrentPart().getId();
-            conn.getCurrentSubparts().put(id, conn.getCurrentSubparts().getOrDefault(id,0) + quant);
+
+            Connection conn = Connection.getInstance(servernameSub);
+            Part partSub = conn.getRepository().getPart(idSub);
+
+            conn.updateRepository(servernameMaster);
+
+            conn.getRepository().getPart(idMaster).addSupComponent(partSub);
+
+            System.out.println("Out:" +conn.getRepository().getPart(idMaster).getSubComponents());
+
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
